@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+      </a-assets>
+      <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"
+        scale-on-mouseenter="to: 2.2 2.2 2.2">
+
+        <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000"
+          repeat="indefinite"></a-animation>
+      </a-box>
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+    <script>
+    AFRAME.registerComponent('scale-on-mouseenter', {
+      schema: {
+        to: {default: '2.5 2.5 2.5'}
+      },
+      init: function () {
+        var data = this.data;
+        this.el.addEventListener('click', function () {
+          this.setAttribute('scale', data.to);
+        });
+      }
+      // update: function () {},
+      // tick: function () {},
+      // remove: function () {},
+      // pause: function () {},
+      // play: function () {}
+    });
+    </script>
+  </body>
+</html>
